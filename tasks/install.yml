@@ -14,7 +14,13 @@
       copy:
         src: "{{ playbook_dir }}/files/{{ jdk_tarball_file }}.rpm"
         dest: "{{ java_download_path }}/{{ jdk_tarball_file }}.rpm"
-      when: ansible_pkg_mgr == "yum" or ansible_pkg_mgr == "zypper"
+      when: (ansible_pkg_mgr == "yum" or ansible_pkg_mgr == "zypper") and java_version != 6 
+
+    - name: copy bin from local
+      copy:
+        src: "{{ playbook_dir }}/files/{{ jdk_tarball_file }}.bin"
+        dest: "{{ java_download_path }}/{{ jdk_tarball_file }}.bin"
+      when: (ansible_pkg_mgr == "yum" or ansible_pkg_mgr == "zypper") and java_version == 6 
 
     - name: copy tarball from local
       copy:
@@ -32,7 +38,7 @@
 
 
 - name: delegate JDK6 to raw tarball installation process
-  include: use-tarball.yml
+  include: use-unzip.yml
   when: java_version == 6
 
 - name: delegate to RPM installation process

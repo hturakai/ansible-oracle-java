@@ -1,0 +1,11 @@
+---
+# Installation script for Java Cryptography Extensions (JCE)
+
+- name: install unzip
+  package: name=unzip state=present
+
+- name: unzip jdk-6u*-linux-x86.bin
+  unarchive:
+    src: "{{ java_download_path }}/{{ jdk_tarball_file }}.bin"
+    dest: "{{ java_install_dir }}"
+    copy: no
