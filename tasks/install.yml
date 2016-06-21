@@ -31,10 +31,13 @@
   when: not java_download_from_oracle
 
 
+- name: delegate JDK6 to raw tarball installation process
+  include: use-tarball.yml
+  when: java_version == 6
 
 - name: delegate to RPM installation process
   include: use-rpm.yml
-  when: (ansible_pkg_mgr == "yum" or ansible_pkg_mgr == "zypper") and ansible_os_family != 'Darwin'
+  when: (ansible_pkg_mgr == "yum" or ansible_pkg_mgr == "zypper") and ansible_os_family != 'Darwin' and java_version != 6
 
 - name: delegate to raw tarball installation process
   include: use-tarball.yml
