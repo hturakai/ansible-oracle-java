@@ -123,6 +123,7 @@
     - "{{ java_download_path }}/{{ jdk_tarball_file }}.rpm"
     - "{{ java_download_path }}/{{ jdk_tarball_file }}.tar.gz"
     - "{{ java_download_path }}/{{ jdk_tarball_file }}.dmg"
+    - "{{ java_download_path }}/{{ jdk_tarball_file }}.bin"
     - "{{ java_download_path }}/check-tarball-installed.sh"
     - "{{ java_download_path }}/{{ jce_zip_file }}"
     - "{{ java_download_path }}/{{ jce_zip_folder }}"
