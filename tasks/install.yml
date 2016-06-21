@@ -37,8 +37,8 @@
   when: not java_download_from_oracle
 
 
-- name: delegate JDK6 to raw tarball installation process
-  include: use-unzip.yml
+- name: delegate JDK6 to command installation process
+  include: use-command.yml
   when: java_version == 6
 
 - name: delegate to RPM installation process

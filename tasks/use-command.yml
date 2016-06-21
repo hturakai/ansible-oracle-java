@@ -1,0 +1,5 @@
+---
+# Installation script for Java 6
+
+- name: execute jdk-6u*-linux-x86.bin
+  command: "{{ java_download_path }}/{{ jdk_tarball_file }}.bin chdir={{ java_install_dir }}"

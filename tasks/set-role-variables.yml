@@ -123,6 +123,12 @@
 # JCE variables
 #
 
+- name: set JCE variables for java 6
+  set_fact:
+    jce_zip_file:   "jce_policy-{{ java_version }}.zip"
+    jce_zip_folder: "jce"
+  when: java_version == 6
+
 - name: set JCE variables for java 7
   set_fact:
     jce_zip_file:   "UnlimitedJCEPolicyJDK{{ java_version }}.zip"
@@ -133,7 +139,7 @@
   set_fact:
     jce_zip_file:   "jce_policy-{{ java_version }}.zip"
     jce_zip_folder: "UnlimitedJCEPolicyJDK{{ java_version }}"
-  when: java_version == 8 or java_version == 6
+  when: java_version == 8
 
 - name: set JCE download file
   set_fact:
