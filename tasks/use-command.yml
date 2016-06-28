@@ -1,5 +1,16 @@
 ---
 # Installation script for Java 6
 
+- name: make sure /usr/java directory exists
+  file: 
+    path: /usr/java
+    state: directory
+    mode: 0755
+
+- name: make sure the binary has execution rights
+  file: 
+    path: "{{ java_download_path }}/{{ jdk_tarball_file }}.bin"
+    mode: 0755
+
 - name: execute jdk-6u*-linux-x86.bin
   command: "{{ java_download_path }}/{{ jdk_tarball_file }}.bin chdir={{ java_install_dir }}"
